@@ -1,18 +1,14 @@
-package LibraryPkg;
+package com.twu28.biblioteca.LibraryPkg;
+
+import org.junit.internal.matchers.StringContains;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Anoop Hallur
- * Date: 7/12/12
- * Time: 2:52 PM
+ * User: Administrator
+ * Date: 7/13/12
+ * Time: 1:55 PM
  * To change this template use File | Settings | File Templates.
  */
-
-
-
-import java.util.Scanner;
-import java.util.Random;
-
 public class LibraryClass {
 
     private static final int NOOFBOOKS = 50;
@@ -20,7 +16,6 @@ public class LibraryClass {
 
     public static void main(String[] args){
         System.out.println("\t\tWelocome to BIBLIOTECA\n");
-
         while(true){
             System.out.println("1.File\t2.View\t3.Help\n");
             Scanner reader = new Scanner(System.in);
@@ -95,7 +90,7 @@ public class LibraryClass {
                             AboutFunction();
 
                             break;
-                         default:
+                        default:
                             System.out.println("Select A Valid Option\n");
                     }
                     break ;
@@ -190,11 +185,23 @@ public class LibraryClass {
 
     public static boolean FindBook(String Feature,int Type){
         Random random = new Random();
-        boolean status;
+        boolean status = false;//Assume Book not available unless it's availability is confirmed
         switch(Type){
             case 0://Feature is ISBN
                 //Mechanism to check whether the Book with Specified ISBN is present in Database
-                status = random.nextBoolean();
+                String[] PseudoDBofISBN = {}; //Pseudo Database of ISBN's of Books in Library...
+                // Fill in Later when Available
+                for(int i =0 ; i < NOOFBOOKS ; i++){
+                    if(Feature == PseudoDBofISBN[i]){
+                        status = random.nextBoolean();  //Problity that Book will be available
+                        break;
+                    }
+                    else{
+                        status = false;
+
+                    }
+                }
+
                 break;
 
             case 1://Feature is Title
